@@ -1,6 +1,6 @@
-import { Pencil, Trash } from "lucide-react";
+import {BadgePlus, Pencil, Trash} from "lucide-react";
 
-function StudentTable({ students, onUpdate, onDelete }) {
+function StudentTable({ students, onUpdate,onAddPayment, onDelete }) {
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-300 shadow-lg">
@@ -35,14 +35,22 @@ function StudentTable({ students, onUpdate, onDelete }) {
                                     onClick={() => onUpdate(student)}
                                     aria-label="Modifier"
                                 >
-                                    <Pencil className="w-5 h-5" />
+                                    <Pencil className="w-5 h-5"/>
                                 </button>
+                                <button
+                                    className="text-green-500 hover:text-green-700 transition-colors duration-300"
+                                    onClick={() => onAddPayment(student)}
+                                    aria-label="add"
+                                >
+                                    <BadgePlus className="w-5 h-5"/>
+                                </button>
+
                                 <button
                                     className="text-red-500 hover:text-red-700 transition-colors duration-300"
                                     onClick={() => onDelete(student)}
                                     aria-label="Supprimer"
                                 >
-                                    <Trash className="w-5 h-5" />
+                                    <Trash className="w-5 h-5"/>
                                 </button>
                             </td>
                         </tr>

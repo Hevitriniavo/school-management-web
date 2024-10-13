@@ -1,4 +1,4 @@
-import {Home, List} from "lucide-react";
+import {HandCoins, Home, List} from "lucide-react";
 import { Link } from "react-router-dom";
 
 function MenuItem({ icon: Icon, label, to }) {
@@ -13,6 +13,7 @@ function MenuItem({ icon: Icon, label, to }) {
 const menuItems = [
     { id: 1, label: 'Accueil', icon: Home, to: '/' },
     { id: 2, label: 'Élèves', icon: List, to: '/students' },
+    { id: 3, label: 'paiments', icon: HandCoins, to: '/payments' },
 ];
 
 function TheSidebar() {

@@ -7,6 +7,7 @@ import Dialog from "../components/Dialog.jsx";
 import StudentTable from "../components/students/StudentTable.jsx";
 import Modal from "../components/Modal.jsx";
 import StudentForm from "../components/students/StudentForm.jsx";
+import {useNavigate} from "react-router-dom";
 
 function StudentListView() {
     const [students, setStudents] = useState([]);
@@ -17,6 +18,7 @@ function StudentListView() {
     const [studentToDelete, setStudentToDelete] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingStudent, setEditingStudent] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (isMounted.current) {
@@ -57,6 +59,10 @@ function StudentListView() {
     const openDialog = (student) => {
         setStudentToDelete(student);
         setIsDialogOpen(true);
+    };
+
+    const handleAddPayment = (student) =>  {
+        navigate(`/payments/create/${student.id}`)
     };
 
     const handleUpdate = (student) => {
@@ -112,6 +118,7 @@ function StudentListView() {
                         students={students}
                         onUpdate={handleUpdate}
                         onDelete={openDialog}
+                        onAddPayment= {handleAddPayment}
                     />
                 </div>
             )}
