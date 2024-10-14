@@ -1,9 +1,11 @@
 import  {Fragment} from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import {useNavigate} from "react-router-dom";
 
 function Receipt({ receipt }) {
     const { payment, student } = receipt;
+    const navigate = useNavigate();
 
     const handleDownload = () => {
         const input = document.getElementById('receipt');
@@ -33,11 +35,12 @@ function Receipt({ receipt }) {
                 const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
                 const fileName = `recu_de_paiement_${student.firstName}_${student.name}_${formattedDate}.pdf`.replace(/\s+/g, '_')
                 pdf.save(fileName);
+                navigate('/payments');
             });
     };
 
     const handleCancel = () => {
-        console.log('Cancel action logic goes here');
+        navigate("/payments")
     };
 
     return (

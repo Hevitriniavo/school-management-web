@@ -20,12 +20,18 @@ function StudentSearchForm({ onSearch }) {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="flex space-x-2 mb-2">
-            {["id","name", "firstName", "className", "address"].map((field) => (
+            {[
+                { field: "id", placeholder: "ID" },
+                { field: "name", placeholder: "Nom" },
+                { field: "firstName", placeholder: "Prénom" },
+                { field: "className", placeholder: "Classe" },
+                { field: "address", placeholder: "Adresse" }
+            ].map(({ field, placeholder }) => (
                 <input
                     key={field}
                     type="text"
                     {...register(field)}
-                    placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+                    placeholder={placeholder}
                     className="border border-gray-300 w-12 rounded-md p-2 flex-grow focus:outline-none focus:border-[#67597a] transition-colors duration-200"
                 />
             ))}

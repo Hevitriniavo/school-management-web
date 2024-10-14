@@ -1,6 +1,12 @@
 import {BadgePlus, Pencil, Trash} from "lucide-react";
+import {useNavigate} from "react-router-dom";
 
 function StudentTable({students, onUpdate, onAddPayment, onDelete}) {
+    const navigate = useNavigate();
+    const handleClick = (studentId) => {
+        navigate(`/payments/show/${studentId}`)
+    }
+
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-300 shadow-lg">
@@ -24,7 +30,10 @@ function StudentTable({students, onUpdate, onAddPayment, onDelete}) {
                     </tr>
                 ) : (
                     students.map((student) => (
-                        <tr key={student.id} className="border-b border-gray-300 hover:bg-gray-100">
+                        <tr onClick={(e) => {
+                            e.stopPropagation()
+                            handleClick(student.id)
+                        }} key={student.id} className="border-b border-gray-300 hover:bg-gray-100">
                             <td className="py-3 px-6 text-left">{student.id}</td>
                             <td className="py-3 px-6 text-left">{student.name}</td>
                             <td className="py-3 px-6 text-left">{student.firstName}</td>
@@ -34,14 +43,20 @@ function StudentTable({students, onUpdate, onAddPayment, onDelete}) {
                             <td className="py-3 px-6 flex justify-center space-x-2">
                                 <button
                                     className="text-blue-500 hover:text-blue-700 transition-colors duration-300"
-                                    onClick={() => onUpdate(student)}
+                                    onClick={(e) =>{
+                                        e.stopPropagation()
+                                        onUpdate(student)
+                                    }}
                                     aria-label="Modifier"
                                 >
                                     <Pencil className="w-5 h-5"/>
                                 </button>
                                 <button
                                     className="text-green-500 hover:text-green-700 transition-colors duration-300"
-                                    onClick={() => onAddPayment(student)}
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        onAddPayment(student)
+                                    }}
                                     aria-label="add"
                                 >
                                     <BadgePlus className="w-5 h-5"/>
@@ -49,7 +64,10 @@ function StudentTable({students, onUpdate, onAddPayment, onDelete}) {
 
                                 <button
                                     className="text-red-500 hover:text-red-700 transition-colors duration-300"
-                                    onClick={() => onDelete(student)}
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        onDelete(student)
+                                    }}
                                     aria-label="Supprimer"
                                 >
                                     <Trash className="w-5 h-5"/>

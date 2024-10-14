@@ -6,8 +6,8 @@ const paymentSchema = z.object({
     id: z.string().min(1, {message: "Le numero du paiement est requis"}),
     paymentName: z.string().min(1, {message: "Le nom du paiement est requis"}),
     paymentDate: z.string().min(1, {message: "La date du paiement est requise"}),
-    price: z.string(),
-    month: z.string().min(1, {message: "Le mois est requis"}),
+    price: z.number(),
+    month: z.number(),
 });
 
 function PaymentForm({title, onSubmit, defaultValues}) {
@@ -59,7 +59,7 @@ function PaymentForm({title, onSubmit, defaultValues}) {
                     <label className="block mb-1 font-medium">Prix</label>
                     <input
                         type="number"
-                        {...register('price')}
+                        {...register('price',{valueAsNumber: true})}
                         className={`border ${errors.price ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
                     />
                     {errors.price && <span className="text-red-500 text-sm">{errors.price.message}</span>}
@@ -68,7 +68,7 @@ function PaymentForm({title, onSubmit, defaultValues}) {
                     <label className="block mb-1 font-medium">Mois</label>
                     <input
                         type="text"
-                        {...register('month')}
+                        {...register('month', {valueAsNumber: true})}
                         className={`border ${errors.month ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
                     />
                     {errors.month && <span className="text-red-500 text-sm">{errors.month.message}</span>}
