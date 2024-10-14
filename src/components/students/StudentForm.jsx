@@ -4,6 +4,7 @@ import {zodResolver} from "@hookform/resolvers/zod";
 
 const studentSchema = z.object({
     name: z.string().min(2, "Le nom doit avoir au moins 2 caractères"),
+    id: z.string().min(2, "Le matricule doit avoir au moins 2 caractères"),
     firstName: z.string().min(2, "Le prénom doit avoir au moins 2 caractères"),
     className: z.string().min(1, "La classe est requise"),
     address: z.string().min(5, "L'adresse doit avoir au moins 5 caractères"),
@@ -17,7 +18,7 @@ function StudentForm({student, onSubmit}) {
         formState: {errors},
     } = useForm({
         resolver: zodResolver(studentSchema),
-        defaultValues: student || {name: "", firstName: "", className: "", address: "", gender: "MALE"}
+        defaultValues: student || {name: "", firstName: "", id: "", className: "", address: "", gender: "MALE"}
     });
 
     return (
@@ -59,6 +60,34 @@ function StudentForm({student, onSubmit}) {
                 </div>
 
                 <div>
+                    <label className="block text-gray-700">Matricule</label>
+                    <input
+                        type="text"
+                        placeholder="Matricule"
+                        readOnly={!!student?.id}
+                        {...register("id")}
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                    {errors.id && <p className="text-red-500 text-sm">{errors.id.message}</p>}
+                </div>
+
+            </div>
+
+            <div className="grid grid-cols-2 gap-6">
+                <div>
+                    <label className="block text-gray-700">Genre</label>
+                    <select
+                        {...register("gender")}
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    >
+                        <option value="MALE">Masculin</option>
+                       <option value="FEMALE">Féminin</option>
+                       <option value="OTHER">Autre</option>
+                   </select>
+                   {errors.gender && <p className="text-red-500 text-sm">{errors.gender.message}</p>}
+               </div>
+
+                <div>
                     <label className="block text-gray-700">Adresse</label>
                     <input
                         type="text"
@@ -68,19 +97,6 @@ function StudentForm({student, onSubmit}) {
                     />
                     {errors.address && <p className="text-red-500 text-sm">{errors.address.message}</p>}
                 </div>
-            </div>
-
-            <div>
-                <label className="block text-gray-700">Genre</label>
-                <select
-                    {...register("gender")}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                    <option value="MALE">Masculin</option>
-                    <option value="FEMALE">Féminin</option>
-                    <option value="OTHER">Autre</option>
-                </select>
-                {errors.gender && <p className="text-red-500 text-sm">{errors.gender.message}</p>}
             </div>
 
             <div className="flex justify-end">

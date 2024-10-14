@@ -6,6 +6,7 @@ function StudentTable({students, onUpdate, onAddPayment, onDelete}) {
             <table className="min-w-full bg-white border border-gray-300 shadow-lg">
                 <thead>
                 <tr className="bg-[#67597a] text-white uppercase text-sm leading-normal">
+                    <th className="py-3 px-6 text-left">ID</th>
                     <th className="py-3 px-6 text-left">Nom</th>
                     <th className="py-3 px-6 text-left">Prénom</th>
                     <th className="py-3 px-6 text-left">Classe</th>
@@ -24,6 +25,7 @@ function StudentTable({students, onUpdate, onAddPayment, onDelete}) {
                 ) : (
                     students.map((student) => (
                         <tr key={student.id} className="border-b border-gray-300 hover:bg-gray-100">
+                            <td className="py-3 px-6 text-left">{student.id}</td>
                             <td className="py-3 px-6 text-left">{student.name}</td>
                             <td className="py-3 px-6 text-left">{student.firstName}</td>
                             <td className="py-3 px-6 text-left">{student.className}</td>

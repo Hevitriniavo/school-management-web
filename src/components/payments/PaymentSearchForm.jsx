@@ -11,6 +11,7 @@ const INITIAL_SEARCH_PARAMS = {
 
 const formFields = [
     { name: "paymentName", type: "text", placeholder: "Nom du paiement" },
+    { name: "id", type: "text", placeholder: "Numéro du paiement" },
     { name: "startDate", type: "date", placeholder: "Date de début" },
     { name: "endDate", type: "date", placeholder: "Date de fin" },
     { name: "minPrice", type: "number", placeholder: "Prix minimum" },

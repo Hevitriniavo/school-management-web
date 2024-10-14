@@ -3,6 +3,7 @@ import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod';
 
 const paymentSchema = z.object({
+    id: z.string().min(1, {message: "Le numero du paiement est requis"}),
     paymentName: z.string().min(1, {message: "Le nom du paiement est requis"}),
     paymentDate: z.string().min(1, {message: "La date du paiement est requise"}),
     price: z.string(),
@@ -34,6 +35,16 @@ function PaymentForm({title, onSubmit, defaultValues}) {
                         className={`border ${errors.paymentName ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
                     />
                     {errors.paymentName && <span className="text-red-500 text-sm">{errors.paymentName.message}</span>}
+                </div>
+                <div>
+                    <label className="block mb-1 font-medium">Numéro du Paiement</label>
+                    <input
+                        type="text"
+                        readOnly={!!defaultValues?.id}
+                        {...register('id')}
+                        className={`border ${errors.id ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
+                    />
+                    {errors.id && <span className="text-red-500 text-sm">{errors.id.message}</span>}
                 </div>
                 <div>
                     <label className="block mb-1 font-medium">Date du Paiement</label>

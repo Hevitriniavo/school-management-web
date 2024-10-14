@@ -13,6 +13,7 @@ import StudentSearchForm from "../components/students/StudentSearchForm.jsx";
 const PAGE_SIZES = [4, 6, 8, 10, 12, 14, 20, 30];
 const INITIAL_SEARCH_PARAMS = {
     name: "",
+    id: "",
     firstName: "",
     className: "",
     address: "",
@@ -87,11 +88,9 @@ function StudentListView() {
     };
 
     const handleFormSubmit = (data) => {
-        const body = editingStudent ? {id: editingStudent.id, ...data} : data;
-
         fetchApi(`${apiUrl}/students`, {
             method: "POST",
-            body,
+            body: data,
         })
             .then((updatedStudent) => {
                 setStudents((prev) =>

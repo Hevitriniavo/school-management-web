@@ -10,6 +10,7 @@ import Loading from "../components/Loading.jsx";
 
 const paymentSchema = z.object({
     studentId: z.string(),
+    id: z.string(),
     paymentName: z.string(),
     paymentDate: z.string(),
     price: z.number(),
@@ -60,7 +61,7 @@ function CreatePaymentWithSelectView() {
         })
             .then((res) => {
                 console.log(res);
-                navigate('/payments');
+                navigate(`/payments/receipt/${res.id}/${res.studentId}`);
             })
             .catch((error) => {
                 console.error(error);
@@ -112,6 +113,18 @@ function CreatePaymentWithSelectView() {
                             </div>
 
                             <div>
+                                <label htmlFor="paymentName" className="block text-sm font-medium text-gray-700 mb-1">
+                                    Numéro du Paiement
+                                </label>
+                                <input
+                                    type="text"
+                                    id="id"
+                                    {...register('id')}
+                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
+                                />
+                            </div>
+
+                            <div>
                                 <label htmlFor="paymentDate" className="block text-sm font-medium text-gray-700 mb-1">
                                     Date du Paiement
                                 </label>
@@ -142,11 +155,10 @@ function CreatePaymentWithSelectView() {
                                 <input
                                     type="text"
                                     id="month"
-                                    {...register('month',{valueAsNumber: true})}
+                                    {...register('month', {valueAsNumber: true})}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
                                 />
                             </div>
-
 
 
                         </div>

@@ -12,6 +12,7 @@ const PAGE_SIZES = [4, 6, 8, 10, 12, 14, 20, 30];
 
  const INITIAL_SEARCH_PARAMS = {
     paymentName: "",
+    id: "",
     startDate: "",
     endDate: "",
     minPrice: "",
