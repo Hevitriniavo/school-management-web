@@ -7,6 +7,7 @@ import PaymentListView from "../views/PaymentListView.jsx";
 import CreatePaymentView from "../views/CreatePaymentView.jsx";
 import UpdatePaymentView from "../views/UpdatePaymentView.jsx";
 import CreatePaymentWithSelectView from "../views/CreatePaymentWithSelectView.jsx";
+import ReceiptView from "../views/ReceiptView.jsx";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: "payments/edit/:paymentId",
                 element: <UpdatePaymentView/>
+            },
+            {
+                path: "payments/receipt/:paymentId/:studentId",
+                element: <ReceiptView/>
             }
         ]
     },

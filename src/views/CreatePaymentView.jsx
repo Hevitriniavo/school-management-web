@@ -17,6 +17,7 @@ function CreatePaymentView() {
         setError(null);
         const body = {
             ...data,
+            amount: data.price * data.month,
             studentId,
         };
 
@@ -26,7 +27,7 @@ function CreatePaymentView() {
         })
             .then((res) => {
                 console.log(res);
-                navigate("/students");
+                navigate(`/payments/receipt/${res.id}/${res.studentId}`);
             })
             .catch((e) => {
                 console.error(e);

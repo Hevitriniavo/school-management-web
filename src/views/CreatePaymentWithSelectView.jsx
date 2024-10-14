@@ -13,8 +13,7 @@ const paymentSchema = z.object({
     paymentName: z.string(),
     paymentDate: z.string(),
     price: z.number(),
-    month: z.string(),
-    amount: z.number(),
+    month: z.number(),
 });
 
 function CreatePaymentWithSelectView() {
@@ -54,7 +53,10 @@ function CreatePaymentWithSelectView() {
     const onSubmit = (data) => {
         fetchApi(`${apiUrl}/payments`, {
             method: 'POST',
-            body: data,
+            body: {
+                ...data,
+                amount: data.price * data.month
+            },
         })
             .then((res) => {
                 console.log(res);
@@ -140,22 +142,13 @@ function CreatePaymentWithSelectView() {
                                 <input
                                     type="text"
                                     id="month"
-                                    {...register('month')}
+                                    {...register('month',{valueAsNumber: true})}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
                                 />
                             </div>
 
-                            <div>
-                                <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">
-                                    Montant
-                                </label>
-                                <input
-                                    type="number"
-                                    id="amount"
-                                    {...register('amount', {valueAsNumber: true})}
-                                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
-                                />
-                            </div>
+
+
                         </div>
 
                         <div className="flex justify-between">

@@ -129,7 +129,7 @@ function PaymentListView() {
                 onCancel={() => setIsDialogOpen(false)}
                 onConfirm={() => handleDelete(paymentToDelete?.id)}
                 title={`Supprimer le paiment ${paymentToDelete ? paymentToDelete.paymentName : ''}?`}
-                content={() => <p>Êtes-vous sûr de vouloir supprimer cet paiment ?</p>}
+                content={() => <p className="text-center">Êtes-vous sûr de vouloir supprimer cet paiment ?</p>}
             />
         </>
     );

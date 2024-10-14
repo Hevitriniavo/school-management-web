@@ -147,7 +147,7 @@ function StudentListView() {
                 onCancel={() => setIsDialogOpen(false)}
                 onConfirm={() => handleDelete(studentToDelete?.id)}
                 title={`Supprimer l'étudiant ${studentToDelete ? studentToDelete.name : ''}?`}
-                content={() => <p>Êtes-vous sûr de vouloir supprimer cet étudiant ?</p>}
+                content={() => <p className="text-center">Êtes-vous sûr de vouloir supprimer cet étudiant ?</p>}
             />
             <Modal
                 isOpen={isModalOpen}

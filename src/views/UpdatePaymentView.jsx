@@ -39,10 +39,10 @@ function UpdatePaymentView() {
     }, [paymentId]);
 
     const handleSubmit = (data) => {
-        console.log(data);
         const body = {
             ...data,
             id: currentPayment.id,
+            amount: data.price * data.month,
             studentId: currentPayment.studentId
         }
         fetchApi(`${apiUrl}/payments`, {

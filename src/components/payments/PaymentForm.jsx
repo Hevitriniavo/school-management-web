@@ -7,7 +7,6 @@ const paymentSchema = z.object({
     paymentDate: z.string().min(1, {message: "La date du paiement est requise"}),
     price: z.string(),
     month: z.string().min(1, {message: "Le mois est requis"}),
-    amount: z.string(),
 });
 
 function PaymentForm({title, onSubmit, defaultValues}) {
@@ -63,15 +62,7 @@ function PaymentForm({title, onSubmit, defaultValues}) {
                     />
                     {errors.month && <span className="text-red-500 text-sm">{errors.month.message}</span>}
                 </div>
-                <div>
-                    <label className="block mb-1 font-medium">Montant</label>
-                    <input
-                        type="number"
-                        {...register('amount')}
-                        className={`border ${errors.amount ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
-                    />
-                    {errors.amount && <span className="text-red-500 text-sm">{errors.amount.message}</span>}
-                </div>
+
             </div>
             <button type="submit"
                     className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 transition-colors duration-200">
