@@ -1,84 +1,75 @@
-import {useForm} from 'react-hook-form';
-import {z} from 'zod';
-import {zodResolver} from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate } from 'react-router-dom';
 
 const paymentSchema = z.object({
-    id: z.string().min(1, {message: "Le numero du paiement est requis"}),
-    paymentName: z.string().min(1, {message: "Le nom du paiement est requis"}),
-    paymentDate: z.string().min(1, {message: "La date du paiement est requise"}),
+    id: z.string().min(1, { message: "Le numéro du paiement est requis" }),
+    paymentName: z.string().min(1, { message: "Le nom du paiement est requis" }),
+    paymentDate: z.string().min(1, { message: "La date du paiement est requise" }),
     price: z.number(),
     month: z.number(),
 });
 
-function PaymentForm({title, onSubmit, defaultValues}) {
+const formFields = (isReadOnlyId) => [
+    { label: 'Nom du Paiement', name: 'paymentName', type: 'text', placeholder: 'Entrez le nom du paiement' },
+    { label: 'Numéro du Paiement', name: 'id', type: 'text', placeholder: 'Entrez le numéro du paiement', readOnly: isReadOnlyId },
+    { label: 'Date du Paiement', name: 'paymentDate', type: 'date', placeholder: 'Sélectionnez la date du paiement' },
+    { label: 'Prix', name: 'price', type: 'number', placeholder: 'Entrez le prix' },
+    { label: 'Mois', name: 'month', type: 'number', placeholder: 'Entrez le mois' },
+];
+
+function PaymentForm({ title, onSubmit, defaultValues }) {
     const {
         register,
         handleSubmit,
-        formState: {errors},
+        formState: { errors },
     } = useForm({
         resolver: zodResolver(paymentSchema),
         defaultValues,
     });
 
+    const navigate = useNavigate();
+
+    const handleCancel = () => {
+        navigate('/payments');
+    };
+
+    const isReadOnlyId = !!defaultValues?.id;
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}
               className="space-y-6 p-6 border border-gray-300 rounded-lg shadow-md bg-white">
-            <h2 className="text-lg font-semibold mb-4 text-center">
+            <h2 className="text-lg font-bold text-xl mb-4 text-center">
                 {title ? title : defaultValues ? "Mettre à jour le Paiement" : "Créer un Paiement"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label className="block mb-1 font-medium">Nom du Paiement</label>
-                    <input
-                        type="text"
-                        {...register('paymentName')}
-                        className={`border ${errors.paymentName ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
-                    />
-                    {errors.paymentName && <span className="text-red-500 text-sm">{errors.paymentName.message}</span>}
-                </div>
-                <div>
-                    <label className="block mb-1 font-medium">Numéro du Paiement</label>
-                    <input
-                        type="text"
-                        readOnly={!!defaultValues?.id}
-                        {...register('id')}
-                        className={`border ${errors.id ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
-                    />
-                    {errors.id && <span className="text-red-500 text-sm">{errors.id.message}</span>}
-                </div>
-                <div>
-                    <label className="block mb-1 font-medium">Date du Paiement</label>
-                    <input
-                        type="date"
-                        {...register('paymentDate')}
-                        className={`border ${errors.paymentDate ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
-                    />
-                    {errors.paymentDate && <span className="text-red-500 text-sm">{errors.paymentDate.message}</span>}
-                </div>
-                <div>
-                    <label className="block mb-1 font-medium">Prix</label>
-                    <input
-                        type="number"
-                        {...register('price',{valueAsNumber: true})}
-                        className={`border ${errors.price ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
-                    />
-                    {errors.price && <span className="text-red-500 text-sm">{errors.price.message}</span>}
-                </div>
-                <div>
-                    <label className="block mb-1 font-medium">Mois</label>
-                    <input
-                        type="text"
-                        {...register('month', {valueAsNumber: true})}
-                        className={`border ${errors.month ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
-                    />
-                    {errors.month && <span className="text-red-500 text-sm">{errors.month.message}</span>}
-                </div>
-
+                {formFields(isReadOnlyId).map(({ label, name, type, placeholder, readOnly }) => (
+                    <div key={name}>
+                        <label className="block mb-1 font-medium">{label}</label>
+                        <input
+                            type={type}
+                            readOnly={readOnly}
+                            {...register(name)}
+                            placeholder={placeholder} // Add placeholder here
+                            className={`border ${errors[name] ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
+                        />
+                        {errors[name] && <span className="text-red-500 text-sm">{errors[name].message}</span>}
+                    </div>
+                ))}
             </div>
-            <button type="submit"
-                    className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 transition-colors duration-200">
-                {defaultValues ? "Mettre à Jour" : "Payer"}
-            </button>
+
+            <div className="flex justify-between">
+                <button type="submit"
+                        className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 transition-colors duration-200">
+                    {defaultValues ? "Mettre à Jour" : "Payer"}
+                </button>
+
+                <button type="button" onClick={handleCancel}
+                        className="bg-gray-500 text-white rounded-lg py-2 px-4 hover:bg-gray-600 transition-colors duration-200">
+                    Annuler
+                </button>
+            </div>
         </form>
     );
 }
