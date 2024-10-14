@@ -1,11 +1,11 @@
 import {BadgePlus, Pencil, Trash} from "lucide-react";
 
-function StudentTable({ students, onUpdate,onAddPayment, onDelete }) {
+function StudentTable({students, onUpdate, onAddPayment, onDelete}) {
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-300 shadow-lg">
                 <thead>
-                <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <tr className="bg-[#67597a] text-white uppercase text-sm leading-normal">
                     <th className="py-3 px-6 text-left">Nom</th>
                     <th className="py-3 px-6 text-left">Prénom</th>
                     <th className="py-3 px-6 text-left">Classe</th>

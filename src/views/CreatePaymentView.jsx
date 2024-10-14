@@ -1,14 +1,14 @@
 import PaymentForm from "../components/payments/PaymentForm.jsx";
-import { useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import fetchApi from "../services/fetchApi.js";
-import { apiUrl } from "../config.js";
-import { useState } from "react";
+import {apiUrl} from "../config.js";
+import {useState} from "react";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
 
 function CreatePaymentView() {
     const navigate = useNavigate();
-    const { studentId } = useParams();
+    const {studentId} = useParams();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -39,9 +39,9 @@ function CreatePaymentView() {
 
     return (
         isLoading ? (
-            <Loading />
+            <Loading/>
         ) : error ? (
-            <ErrorMessage as={() => <h1> {error} </h1>} />
+            <ErrorMessage as={() => <h1> {error} </h1>}/>
         ) : (
             <PaymentForm
                 onSubmit={handleCreatePayment}

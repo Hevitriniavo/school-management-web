@@ -1,11 +1,11 @@
-import { Pencil, Trash } from "lucide-react";
+import {Pencil, Trash} from "lucide-react";
 
-function PaymentTable({ payments, onUpdate, onDelete }) {
+function PaymentTable({payments, onUpdate, onDelete}) {
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full bg-white border border-gray-300 shadow-lg">
                 <thead>
-                <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <tr className="bg-[#67597a] text-white uppercase text-sm leading-normal">
                     <th className="py-3 px-6 text-left">ID</th>
                     <th className="py-3 px-6 text-left">Nom de Paiement</th>
                     <th className="py-3 px-6 text-left">Date de Paiement</th>
@@ -27,7 +27,7 @@ function PaymentTable({ payments, onUpdate, onDelete }) {
                             <td className="py-3 px-6 text-left">{payment.id}</td>
                             <td className="py-3 px-6 text-left">{payment.paymentName}</td>
                             <td className="py-3 px-6 text-left">{payment.paymentDate}</td>
-                            <td className="py-3 px-6 text-left">{payment.price.toLocaleString()} Ar</td>
+                            <td className="py-3 px-6 text-left">{payment.price.toString()} Ar</td>
                             <td className="py-3 px-6 text-left">{payment.month}</td>
                             <td className="py-3 px-6 flex justify-center space-x-2">
                                 <button
@@ -35,14 +35,14 @@ function PaymentTable({ payments, onUpdate, onDelete }) {
                                     onClick={() => onUpdate(payment)}
                                     aria-label="Modifier"
                                 >
-                                    <Pencil className="w-5 h-5" />
+                                    <Pencil className="w-5 h-5"/>
                                 </button>
                                 <button
                                     className="text-red-500 hover:text-red-700 transition-colors duration-300"
                                     onClick={() => onDelete(payment)}
                                     aria-label="Supprimer"
                                 >
-                                    <Trash className="w-5 h-5" />
+                                    <Trash className="w-5 h-5"/>
                                 </button>
                             </td>
                         </tr>

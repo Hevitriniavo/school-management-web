@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate } from 'react-router-dom';
-import { apiUrl } from "../config.js";
+import {useEffect, useRef, useState} from 'react';
+import {useForm} from 'react-hook-form';
+import {z} from 'zod';
+import {zodResolver} from '@hookform/resolvers/zod';
+import {useNavigate} from 'react-router-dom';
+import {apiUrl} from "../config.js";
 import fetchApi from "../services/fetchApi.js";
 import ErrorMessage from "../components/ErrorMessage.jsx";
 import Loading from "../components/Loading.jsx";
@@ -27,7 +27,7 @@ function CreatePaymentWithSelectView() {
         register,
         handleSubmit,
         setError,
-        formState: { isSubmitting },
+        formState: {isSubmitting},
     } = useForm({
         resolver: zodResolver(paymentSchema),
     });
@@ -69,9 +69,9 @@ function CreatePaymentWithSelectView() {
     return (
         <div className=" mt-10 p-6 bg-white rounded-lg shadow-md">
             {isLoading ? (
-                <Loading />
+                <Loading/>
             ) : isError ? (
-                <ErrorMessage as={() => <h1>Une erreur est survenue lors de la récupération des étudiants.</h1>} />
+                <ErrorMessage as={() => <h1>Une erreur est survenue lors de la récupération des étudiants.</h1>}/>
             ) : (
                 <>
                     <h2 className="text-2xl font-bold text-center mb-6">Créer un Paiement</h2>
@@ -128,7 +128,7 @@ function CreatePaymentWithSelectView() {
                                 <input
                                     type="number"
                                     id="price"
-                                    {...register('price', { valueAsNumber: true })}
+                                    {...register('price', {valueAsNumber: true})}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
                                 />
                             </div>
@@ -152,7 +152,7 @@ function CreatePaymentWithSelectView() {
                                 <input
                                     type="number"
                                     id="amount"
-                                    {...register('amount', { valueAsNumber: true })}
+                                    {...register('amount', {valueAsNumber: true})}
                                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-2"
                                 />
                             </div>

@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import fetchApi from "../services/fetchApi.js";
-import { apiUrl } from "../config.js";
+import {apiUrl} from "../config.js";
 import Loading from "../components/Loading.jsx";
 import ErrorMessage from "../components/ErrorMessage.jsx";
 import PaymentChart from "../components/charts/PaymentChart.jsx";
@@ -33,12 +33,12 @@ function HomeView() {
     return (
         <>
             {isLoading ? (
-                <Loading />
+                <Loading/>
             ) : isError ? (
-                <ErrorMessage />
+                <ErrorMessage/>
             ) : (
                 <div>
-                    <PaymentChart data={pay} />
+                    <PaymentChart data={pay}/>
                 </div>
             )}
         </>

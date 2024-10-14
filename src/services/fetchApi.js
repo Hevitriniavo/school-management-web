@@ -6,7 +6,7 @@ async function fetchApi(url, options = {}) {
     const requestOptions = {
         method: options.method || 'GET',
         headers: headers,
-        ...(options.body && { body: JSON.stringify(options.body) }),
+        ...(options.body && {body: JSON.stringify(options.body)}),
     };
 
     const newUrl = typeof url == "string" ? url : url();

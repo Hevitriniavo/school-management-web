@@ -1,14 +1,14 @@
-import { useEffect, useRef } from 'react';
+import {useEffect, useRef} from 'react';
 import * as d3 from 'd3';
 
-function PaymentChart({ data }) {
+function PaymentChart({data}) {
     const chartRef = useRef(null);
 
     useEffect(() => {
         if (data.length > 0) {
             const svg = d3.select(chartRef.current);
 
-            const margin = { top: 40, right: 40, bottom: 60, left: 70 };
+            const margin = {top: 40, right: 40, bottom: 60, left: 70};
             const width = 1000 - margin.left - margin.right;
             const height = 500 - margin.top - margin.bottom;
 
@@ -47,7 +47,7 @@ function PaymentChart({ data }) {
             g.append('path')
                 .datum(data)
                 .attr('fill', 'none')
-                .attr('stroke', '#69b3a2')
+                .attr('stroke', '#85baa1')
                 .attr('stroke-width', 2)
                 .attr('d', line);
 
@@ -73,6 +73,6 @@ function PaymentChart({ data }) {
     }, [data]);
 
     return <svg ref={chartRef} width={1000} height={500}></svg>;
-};
+}
 
 export default PaymentChart;

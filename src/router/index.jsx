@@ -35,7 +35,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "payments/edit/:paymentId",
-                element: <UpdatePaymentView />
+                element: <UpdatePaymentView/>
             }
         ]
     },

@@ -1,27 +1,28 @@
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+import {useForm} from 'react-hook-form';
+import {z} from 'zod';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 const paymentSchema = z.object({
-    paymentName: z.string().min(1, { message: "Le nom du paiement est requis" }),
-    paymentDate: z.string().min(1, { message: "La date du paiement est requise" }),
+    paymentName: z.string().min(1, {message: "Le nom du paiement est requis"}),
+    paymentDate: z.string().min(1, {message: "La date du paiement est requise"}),
     price: z.string(),
-    month: z.string().min(1, { message: "Le mois est requis" }),
+    month: z.string().min(1, {message: "Le mois est requis"}),
     amount: z.string(),
 });
 
-function PaymentForm({ title, onSubmit, defaultValues }) {
+function PaymentForm({title, onSubmit, defaultValues}) {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: {errors},
     } = useForm({
         resolver: zodResolver(paymentSchema),
         defaultValues,
     });
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 p-6 border border-gray-300 rounded-lg shadow-md bg-white">
+        <form onSubmit={handleSubmit(onSubmit)}
+              className="space-y-6 p-6 border border-gray-300 rounded-lg shadow-md bg-white">
             <h2 className="text-lg font-semibold mb-4 text-center">
                 {title ? title : defaultValues ? "Mettre à jour le Paiement" : "Créer un Paiement"}
             </h2>
@@ -72,7 +73,8 @@ function PaymentForm({ title, onSubmit, defaultValues }) {
                     {errors.amount && <span className="text-red-500 text-sm">{errors.amount.message}</span>}
                 </div>
             </div>
-            <button type="submit" className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 transition-colors duration-200">
+            <button type="submit"
+                    className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 transition-colors duration-200">
                 {defaultValues ? "Mettre à Jour" : "Payer"}
             </button>
         </form>
