@@ -3,6 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import {apiUrl} from "../config.js";
 import Loading from "../components/Loading.jsx";
 import ErrorMessage from "../components/ErrorMessage.jsx";
+import useDocumentTitle from "../hooks/useDocumentTitle.jsx";
 
 function PaymentShowView() {
     const { studentId } = useParams();
@@ -10,7 +11,7 @@ function PaymentShowView() {
     const [isError, setIsError] = useState(false);
     const isMounted = useRef(true)
     const navigate = useNavigate();
-
+    useDocumentTitle("Détail de payment ID : " + studentId);
     useEffect(() => {
         if (isMounted.current){
             fetch(`${apiUrl}/payments/student/${studentId}`)

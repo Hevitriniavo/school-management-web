@@ -7,6 +7,7 @@ import { apiUrl } from "../config.js";
 import fetchApi from "../services/fetchApi.js";
 import ErrorMessage from "../components/ErrorMessage.jsx";
 import Loading from "../components/Loading.jsx";
+import useDocumentTitle from "../hooks/useDocumentTitle.jsx";
 
 const paymentSchema = z.object({
     studentId: z.string(),
@@ -39,7 +40,7 @@ function CreatePaymentWithSelectView() {
     } = useForm({
         resolver: zodResolver(paymentSchema),
     });
-
+    useDocumentTitle("Création de paiement");
     useEffect(() => {
         if (isMounted.current) {
             fetchApi(`${apiUrl}/students`)

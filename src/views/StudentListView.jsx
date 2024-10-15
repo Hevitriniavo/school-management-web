@@ -9,6 +9,7 @@ import StudentForm from "../components/students/StudentForm.jsx";
 import {useNavigate} from "react-router-dom";
 import Pagination from "../components/Pagination.jsx";
 import StudentSearchForm from "../components/students/StudentSearchForm.jsx";
+import useDocumentTitle from "../hooks/useDocumentTitle.jsx";
 
 const PAGE_SIZES = [4, 6, 8, 10, 12, 14, 20, 30];
 const INITIAL_SEARCH_PARAMS = {
@@ -29,7 +30,7 @@ function StudentListView() {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(PAGE_SIZES[1]);
     const [totalPage, setTotalPage] = useState(0);
-
+    useDocumentTitle("Tableau des étudiants");
     const [searchParams, setSearchParams] = useState(INITIAL_SEARCH_PARAMS);
 
     const navigate = useNavigate();

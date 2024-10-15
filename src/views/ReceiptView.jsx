@@ -5,13 +5,14 @@ import {apiUrl} from "../config.js";
 import ErrorMessage from "../components/ErrorMessage.jsx";
 import Loading from "../components/Loading.jsx";
 import Receipt from "../components/receipts/Receipt.jsx";
+import useDocumentTitle from "../hooks/useDocumentTitle.jsx";
 
 function ReceiptView() {
     const {paymentId, studentId} = useParams();
     const [receipt, setReceipt] = useState(null);
     const [isError, setIsError] = useState(false);
     const isMounted = useRef(true)
-
+    useDocumentTitle("Réçu");
     useEffect(() => {
          if (isMounted.current){
              const query = `${apiUrl}/receipts/student/${studentId}/payment/${paymentId}`;

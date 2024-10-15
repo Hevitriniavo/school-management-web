@@ -7,6 +7,7 @@ import Dialog from "../components/Dialog.jsx";
 import {useNavigate} from "react-router-dom";
 import Pagination from "../components/Pagination.jsx";
 import PaymentSearchForm from "../components/payments/PaymentSearchForm.jsx";
+import useDocumentTitle from "../hooks/useDocumentTitle.jsx";
 
 const PAGE_SIZES = [4, 6, 8, 10, 12, 14, 20, 30];
 
@@ -30,7 +31,7 @@ function PaymentListView() {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(PAGE_SIZES[0]);
     const [totalPage, setTotalPage] = useState(0);
-
+    useDocumentTitle("Tableau des Paiements");
     const buildSearchQuery = () => {
         const params = new URLSearchParams({
             size: pageSize,

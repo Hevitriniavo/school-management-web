@@ -5,6 +5,7 @@ import fetchApi from "../services/fetchApi.js";
 import {apiUrl} from "../config.js";
 import Loading from "../components/Loading.jsx";
 import ErrorMessage from "../components/ErrorMessage.jsx";
+import useDocumentTitle from "../hooks/useDocumentTitle.jsx";
 
 function UpdatePaymentView() {
     const {paymentId} = useParams();
@@ -13,7 +14,7 @@ function UpdatePaymentView() {
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     const navigate = useNavigate();
-
+    useDocumentTitle("Mise en jour de paiement");
     useEffect(() => {
         if (isMounted.current) {
             fetchApi(`${apiUrl}/payments/${paymentId}`)

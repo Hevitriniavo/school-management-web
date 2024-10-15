@@ -5,13 +5,14 @@ import {apiUrl} from "../config.js";
 import {useState} from "react";
 import Loading from "../components/Loading";
 import ErrorMessage from "../components/ErrorMessage";
+import useDocumentTitle from "../hooks/useDocumentTitle.jsx";
 
 function CreatePaymentView() {
     const navigate = useNavigate();
     const {studentId} = useParams();
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-
+    useDocumentTitle("Création de paiement");
     const handleCreatePayment = (data) => {
         setIsLoading(true);
         setError(null);
