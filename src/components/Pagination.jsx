@@ -74,7 +74,7 @@ function Pagination({
                 key={index}
                 className={`px-3 py-2 border rounded-md transition duration-300 ease-in-out transform hover:scale-105 ${page === currentPage ? btnCurrentClass : 'bg-gray-200 dark:bg-[#1b1b1f] hover:bg-gray-300 text-gray-700 dark:text-gray-300'} ${page === '...' ? 'cursor-default' : 'cursor-pointer'}`}
                 disabled={page === '...'}
-                onClick={() => typeof page === 'number' && handlePageChange(page )}
+                onClick={() => typeof page === 'number' && handlePageChange(page)}
             >
                 {page}
             </button>
@@ -83,7 +83,7 @@ function Pagination({
 
     const renderPagination = () => {
         return (
-            <div className="flex items-center justify-between space-x-4 p-4 bg-white dark:bg-[#18181b] rounded-lg shadow-md">
+            <div className="flex items-center justify-between space-x-4 p-4 bg-white dark:bg-transparent rounded-lg shadow-md">
                 <div className="flex items-center gap-2">
                     <button
                         className={`dark:bg-[#161618] px-3 py-2 bg-gray-200 dark:hover:bg-[#202127] rounded-md transition duration-300 ease-in-out transform hover:scale-105 ${btnClassName}`}

@@ -3,9 +3,9 @@ import {Pencil, Trash} from "lucide-react";
 function PaymentTable({payments, onUpdate, onDelete}) {
     return (
         <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-300 shadow-lg">
+            <table className="min-w-full dark:bg-[#0F2027] dark:border-none bg-white border border-gray-300 shadow-lg">
                 <thead>
-                <tr className="bg-[#67597a] text-white uppercase text-sm leading-normal">
+                <tr className="bg-[#67597a] text-white uppercase text-sm dark:bg-black leading-normal">
                     <th className="py-3 px-6 text-left">ID</th>
                     <th className="py-3 px-6 text-left">Nom de Paiement</th>
                     <th className="py-3 px-6 text-left">Date de Paiement</th>
@@ -23,7 +23,7 @@ function PaymentTable({payments, onUpdate, onDelete}) {
                     </tr>
                 ) : (
                     payments.map((payment) => (
-                        <tr key={payment.id} className="border-b border-gray-300 hover:bg-gray-100">
+                        <tr key={payment.id} className="border-b dark:border-none dark:hover:bg-[#0F2027] hover:bg-gray-100 border-gray-300 hover:bg-gray-100">
                             <td className="py-3 px-6 text-left">{payment.id}</td>
                             <td className="py-3 px-6 text-left">{payment.paymentName}</td>
                             <td className="py-3 px-6 text-left">{payment.paymentDate}</td>

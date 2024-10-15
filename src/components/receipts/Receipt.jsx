@@ -35,7 +35,7 @@ function Receipt({ receipt }) {
                 const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
                 const fileName = `recu_de_paiement_${student.firstName}_${student.name}_${formattedDate}.pdf`.replace(/\s+/g, '_')
                 pdf.save(fileName);
-                navigate('/payments');
+
             });
     };
 
@@ -46,12 +46,12 @@ function Receipt({ receipt }) {
     return (
         <Fragment>
             <div id="receipt"
-                 className="w-full mx-auto mt-10 p-6 bg-white">
+                 className="w-full mx-auto mt-10 p-6 dark:bg-transparent bg-white">
                 <h2 className="text-2xl font-bold text-center mb-6 text-indigo-600">Reçu de Paiement</h2>
 
                 <div className="mb-8">
                     <h3 className="text-lg font-semibold mb-4">Informations de l'Étudiant</h3>
-                    <table className="min-w-full bg-white border border-gray-300">
+                    <table className="min-w-full dark:bg-transparent dark:border-none bg-white border border-gray-300">
                         <tbody>
                         <tr>
                             <td className="py-2 px-4 border-b">ID de l'Étudiant</td>
@@ -83,7 +83,7 @@ function Receipt({ receipt }) {
 
                 <div className="mb-8">
                     <h3 className="text-lg font-semibold mb-4">Détails du Paiement</h3>
-                    <table className="min-w-full bg-white border border-gray-300">
+                    <table className="min-w-full dark:bg-transparent dark:border-none bg-white border border-gray-300">
                         <tbody>
                         <tr>
                             <td className="py-2 px-4 border-b">ID du Paiement</td>

@@ -39,8 +39,8 @@ function PaymentForm({ title, onSubmit, defaultValues }) {
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}
-              className="space-y-6 p-6 border border-gray-300 rounded-lg shadow-md bg-white">
-            <h2 className="text-lg font-bold text-xl mb-4 text-center">
+              className="space-y-6 dark:bg-[#0F2027] dark:border-none p-6 border border-gray-300 rounded-lg shadow-md bg-white">
+            <h2 className="font-bold text-xl mb-4 text-center">
                 {title ? title : defaultValues ? "Mettre à jour le Paiement" : "Créer un Paiement"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -50,9 +50,11 @@ function PaymentForm({ title, onSubmit, defaultValues }) {
                         <input
                             type={type}
                             readOnly={readOnly}
-                            {...register(name)}
-                            placeholder={placeholder} // Add placeholder here
-                            className={`border ${errors[name] ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none focus:ring focus:ring-blue-200`}
+                            {...register(name, {
+                                valueAsNumber: name === "price" || name ==="month"
+                            })}
+                            placeholder={placeholder}
+                            className={`border ${errors[name] ? 'border-red-500' : 'border-gray-300'} rounded-lg p-2 w-full focus:outline-none dark:text-black dark:bg-transparent dark:border-none focus:ring focus:ring-blue-200`}
                         />
                         {errors[name] && <span className="text-red-500 text-sm">{errors[name].message}</span>}
                     </div>

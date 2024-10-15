@@ -38,7 +38,7 @@ function PaymentSearchForm({ onSearch }) {
                         type={field.type}
                         placeholder={field.placeholder}
                         {...register(field.name)}
-                        className="border border-gray-300 rounded-md p-2 focus:outline-none focus:border-[#67597a] transition-colors duration-200"
+                        className="border dark:bg-[#0F2027] border-gray-300 rounded-md p-2 focus:outline-none focus:border-[#67597a] transition-colors duration-200"
                     />
                 ))}
                 <button

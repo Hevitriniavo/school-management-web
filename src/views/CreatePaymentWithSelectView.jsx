@@ -81,7 +81,7 @@ function CreatePaymentWithSelectView() {
     };
 
     return (
-        <div className="mt-10 p-6 bg-white rounded-lg shadow-md">
+        <div className="mt-10 p-6 dark:bg-[#0F2027] bg-white rounded-lg shadow-md">
             {isLoading ? (
                 <Loading />
             ) : isError ? (
@@ -100,12 +100,12 @@ function CreatePaymentWithSelectView() {
                                         <select
                                             id={field.id}
                                             {...register(field.id)}
-                                            className="block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white text-gray-700 transition duration-150 ease-in-out focus:ring focus:ring-indigo-400 focus:border-indigo-500 hover:bg-gray-50"
+                                            className="block dark:bg-transparent w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white text-gray-700 transition duration-150 ease-in-out focus:ring focus:ring-indigo-400 focus:border-indigo-500 hover:bg-gray-50"
                                             required={field.required}
                                         >
                                             <option value="" disabled>{field.placeholder}</option>
                                             {field.options.map(option => (
-                                                <option key={option.value} value={option.value}>
+                                                <option key={option.value} className="dark:bg-transparent" value={option.value}>
                                                     {option.label}
                                                 </option>
                                             ))}
@@ -114,8 +114,10 @@ function CreatePaymentWithSelectView() {
                                         <input
                                             type={field.type}
                                             id={field.id}
-                                            {...register(field.id)}
-                                            className="mt-1 block w-full border-none outline-none rounded-md shadow-sm p-2 transition duration-150 ease-in-out focus:ring focus:ring-indigo-400 bg-white text-gray-700 hover:bg-gray-50"
+                                            {...register(field.id, {
+                                                valueAsNumber: field.id === "price" || field.id === "month"
+                                            })}
+                                            className="mt-1 dark:bg-transparent block w-full border-none outline-none rounded-md shadow-sm p-2 transition duration-150 ease-in-out focus:ring focus:ring-indigo-400 bg-white text-gray-700 hover:bg-gray-50"
                                             placeholder={field.placeholder}
                                         />
                                     )}

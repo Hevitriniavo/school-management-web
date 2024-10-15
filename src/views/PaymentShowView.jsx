@@ -41,8 +41,8 @@ function PaymentShowView() {
                     Voir tous les étudiants
                 </button>
             </div>
-            <div className="bg-white p-6 mb-6">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">Student Information</h2>
+            <div className="dark:bg-transparent bg-white p-6 mb-6">
+                <h2 className="text-2xl dark:text-black font-bold text-gray-800 mb-4">Student Information</h2>
                 <div className="grid grid-cols-2 gap-4">
                     <div><strong>ID:</strong> {studentData.id}</div>
                     <div><strong>Name:</strong> {studentData.firstName} {studentData.name}</div>
@@ -53,8 +53,8 @@ function PaymentShowView() {
             </div>
 
             <div className="overflow-x-auto">
-                <table className="min-w-full bg-white">
-                    <thead className="bg-[#67597a] text-white uppercase text-sm leading-normal">
+                <table className="min-w-full dark:bg-transparent bg-white">
+                    <thead className="bg-[#67597a] dark:bg-black text-white uppercase text-sm leading-normal">
                     <tr>
                         <th className="text-left p-4">Payment ID</th>
                         <th className="text-left p-4">Payment Name</th>

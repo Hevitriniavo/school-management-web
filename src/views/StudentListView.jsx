@@ -13,7 +13,6 @@ import StudentSearchForm from "../components/students/StudentSearchForm.jsx";
 const PAGE_SIZES = [4, 6, 8, 10, 12, 14, 20, 30];
 const INITIAL_SEARCH_PARAMS = {
     name: "",
-    id: "",
     firstName: "",
     className: "",
     address: "",
@@ -88,9 +87,11 @@ function StudentListView() {
     };
 
     const handleFormSubmit = (data) => {
+        const body = editingStudent ? {id: editingStudent.id, ...data} : data;
+
         fetchApi(`${apiUrl}/students`, {
             method: "POST",
-            body: data,
+            body,
         })
             .then((updatedStudent) => {
                 setStudents((prev) =>
@@ -117,7 +118,7 @@ function StudentListView() {
                 <div>
                     <h1 className="text-xl font-bold mb-4 text-center">Liste des étudiants</h1>
                     <button
-                        className="px-4 py-2 bg-[#85baa1] text-black rounded-md hover:bg-green-300 mb-4"
+                        className="px-4  py-2 bg-[#85baa1] text-black rounded-md hover:bg-green-300 mb-4"
                         onClick={handleCreate}
                     >
                         Créer un étudiant

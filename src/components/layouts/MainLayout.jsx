@@ -22,7 +22,7 @@ function MainLayout() {
 
 
     return (
-        <div className="dark:bg-black flex h-screen bg-white dark:text-white text-black">
+        <div className="dark:bg-[#11232a] flex h-screen bg-white dark:text-white text-black">
             {open && (
                 <motion.div
                     className="w-60 shadow-md bg-gray-100 dark:bg-gray-800"

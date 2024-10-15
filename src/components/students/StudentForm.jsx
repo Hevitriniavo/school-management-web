@@ -22,7 +22,7 @@ function StudentForm({student, onSubmit}) {
     });
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 bg-white p-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 dark:bg-[#11232a] bg-white p-6">
             <div className="grid grid-cols-2 gap-6">
                 <div>
                     <label className="block text-gray-700">Nom</label>
@@ -30,7 +30,7 @@ function StudentForm({student, onSubmit}) {
                         type="text"
                         {...register("name")}
                         placeholder="Nom"
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        className="mt-1 block w-full px-3 dark:bg-[#11232a] dark:outline-none dark:border-none py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     />
                     {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                 </div>
@@ -41,7 +41,7 @@ function StudentForm({student, onSubmit}) {
                         type="text"
                         placeholder="Prénom"
                         {...register("firstName")}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        className="mt-1 block w-full dark:bg-[#11232a] dark:outline-none dark:border-none px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     />
                     {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
                 </div>
@@ -54,7 +54,7 @@ function StudentForm({student, onSubmit}) {
                         type="text"
                         placeholder="Classe"
                         {...register("className")}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        className="mt-1 block w-full dark:bg-[#11232a] dark:outline-none dark:border-none px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     />
                     {errors.className && <p className="text-red-500 text-sm">{errors.className.message}</p>}
                 </div>
@@ -63,10 +63,10 @@ function StudentForm({student, onSubmit}) {
                     <label className="block text-gray-700">Matricule</label>
                     <input
                         type="text"
-                        placeholder="Matricule"
                         readOnly={!!student?.id}
+                        placeholder="Matricule"
                         {...register("id")}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        className="mt-1 block dark:bg-[#11232a] dark:outline-none dark:border-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     />
                     {errors.id && <p className="text-red-500 text-sm">{errors.id.message}</p>}
                 </div>
@@ -78,7 +78,7 @@ function StudentForm({student, onSubmit}) {
                     <label className="block text-gray-700">Genre</label>
                     <select
                         {...register("gender")}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        className="mt-1 dark:bg-[#11232a] dark:outline-none dark:border-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     >
                         <option value="MALE">Masculin</option>
                        <option value="FEMALE">Féminin</option>
@@ -93,7 +93,7 @@ function StudentForm({student, onSubmit}) {
                         type="text"
                         placeholder="Adresse"
                         {...register("address")}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        className="mt-1 dark:bg-[#11232a] dark:outline-none dark:border-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     />
                     {errors.address && <p className="text-red-500 text-sm">{errors.address.message}</p>}
                 </div>
@@ -102,7 +102,7 @@ function StudentForm({student, onSubmit}) {
             <div className="flex justify-end">
                 <button
                     type="submit"
-                    className="px-4 py-2 bg-[#67597a] text-white rounded-md transform transition-transform duration-200 hover:scale-105"
+                    className="px-4  py-2 bg-[#67597a] text-white rounded-md transform transition-transform duration-200 hover:scale-105"
                 >
                     {student ? "Mettre à jour" : "Créer"}
                 </button>

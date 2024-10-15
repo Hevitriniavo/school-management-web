@@ -10,15 +10,15 @@ function Dialog({isOpen, onCancel, onConfirm, title = "", cancelText = "", confi
                 initial={{scale: 0.8, opacity: 0}}
                 animate={{scale: 1, opacity: 1}}
                 exit={{scale: 0.8, opacity: 0}}
-                className="bg-white rounded-lg shadow-lg p-6 w-1/3 relative"
+                className="bg-white dark:bg-[#11232a] bg-whiterounded-lg shadow-lg p-6 w-1/3 relative"
             >
                 <button
                     onClick={onCancel}
-                    className="absolute top-2 right-2 text-[#67597a] hover:text-gray-600"
+                    className="absolute top-2 right-2 text-[#67597a]  hover:text-gray-600"
                 >
                     <X size={24}/>
                 </button>
-                <h2 className="text-xl text-center font-bold text-gray-800 mb-4">{title}</h2>
+                <h2 className="text-xl text-center font-bold text-gray-800 dark:text-black mb-4">{title}</h2>
 
                 {CustomMessage ? (
                     <CustomMessage/>

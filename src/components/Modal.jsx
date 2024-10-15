@@ -22,7 +22,7 @@ function Modal({isOpen, onClose, title, children}) {
                 transition={{duration: 0.3}}
                 className="fixed inset-0 z-50 flex items-center justify-center"
             >
-                <div className="bg-white rounded-lg shadow-lg p-6 max-w-[600px] w-full relative">
+                <div className="dark:bg-[#11232a] bg-white rounded-lg shadow-lg p-6 max-w-[600px] w-full relative">
                     <div className="flex justify-between items-center mb-4">
                         <h2 className="text-xl font-bold text-center mx-6">{title}</h2>
                         <button onClick={onClose}>

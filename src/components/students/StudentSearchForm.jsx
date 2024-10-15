@@ -32,12 +32,12 @@ function StudentSearchForm({ onSearch }) {
                     type="text"
                     {...register(field)}
                     placeholder={placeholder}
-                    className="border border-gray-300 w-12 rounded-md p-2 flex-grow focus:outline-none focus:border-[#67597a] transition-colors duration-200"
+                    className="border dark:bg-[#0F2027]  border-gray-300 w-12 rounded-md p-2 flex-grow focus:outline-none focus:border-[#67597a] transition-colors duration-200"
                 />
             ))}
             <select
                 {...register("gender")}
-                className="border border-gray-300 rounded-md p-2 flex-grow focus:outline-none focus:border-[#67597a] transition-colors duration-200"
+                className="border border-gray-300  dark:bg-[#0F2027] rounded-md p-2 flex-grow focus:outline-none focus:border-[#67597a] transition-colors duration-200"
             >
                 <option value="">Genre</option>
                 <option value="MALE">Homme</option>

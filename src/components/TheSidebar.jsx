@@ -18,7 +18,7 @@ const menuItems = [
 
 function TheSidebar() {
     return (
-        <div className="shadow-md h-full w-60 text-white bg-[#67597a]">
+        <div className="shadow-md dark:bg-[#0F2027]  h-full w-60 text-white bg-[#67597a]">
             <div className="p-4  ml-[1rem] font-semibold text-base flex flex-col  ">
                 <div className="mb-2">
                     <img

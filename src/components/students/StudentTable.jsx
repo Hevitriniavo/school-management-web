@@ -9,9 +9,9 @@ function StudentTable({students, onUpdate, onAddPayment, onDelete}) {
 
     return (
         <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-300 shadow-lg">
+            <table className="min-w-full dark:bg-[#0F2027] bg-white border border-gray-300 shadow-lg dark:border-none">
                 <thead>
-                <tr className="bg-[#67597a] text-white uppercase text-sm leading-normal">
+                <tr className="bg-[#67597a] text-white uppercase text-sm leading-normal dark:bg-black">
                     <th className="py-3 px-6 text-left">ID</th>
                     <th className="py-3 px-6 text-left">Nom</th>
                     <th className="py-3 px-6 text-left">Prénom</th>
@@ -33,7 +33,7 @@ function StudentTable({students, onUpdate, onAddPayment, onDelete}) {
                         <tr onClick={(e) => {
                             e.stopPropagation()
                             handleClick(student.id)
-                        }} key={student.id} className="border-b border-gray-300 hover:bg-gray-100">
+                        }} key={student.id} className="border-b dark:border-none border-gray-300 dark:hover:bg-[#0F2027] hover:bg-gray-100">
                             <td className="py-3 px-6 text-left">{student.id}</td>
                             <td className="py-3 px-6 text-left">{student.name}</td>
                             <td className="py-3 px-6 text-left">{student.firstName}</td>
